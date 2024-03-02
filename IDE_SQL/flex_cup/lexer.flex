@@ -82,3 +82,5 @@ value=digit|letter|\"[a-zA-Z]+\"
 {digit}         { return new Symbol(sym.DIGIT        , yyline+1, yycolumn+1, new String(   yytext()   ))  ;}
 {identifier}    { return new Symbol(sym.IDENTIFIER   , yyline+1, yycolumn+1, new String(   yytext()   ))  ;}
 {value}         { return new Symbol(sym.VALUE        , yyline+1, yycolumn+1, new String(   yytext()   ))  ;}
+
+.               { return new Symbol(sym.ERROR        , yyline+1, yycolumn+1, new String(   yytext()   ))  ;} 
