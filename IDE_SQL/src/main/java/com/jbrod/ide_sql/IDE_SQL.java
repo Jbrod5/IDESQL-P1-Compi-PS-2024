@@ -1,4 +1,4 @@
-package com.mycompany.ide_sql;
+package com.jbrod.ide_sql;
 
 /**
  *
