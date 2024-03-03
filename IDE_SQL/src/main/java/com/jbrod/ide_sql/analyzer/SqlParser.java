@@ -31,12 +31,14 @@ public class SqlParser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\022\000\002\002\003\000\002\002\004\000\002\002" +
-    "\003\000\002\002\003\000\002\002\003\000\002\003\010" +
-    "\000\002\004\011\000\002\005\012\000\002\006\007\000" +
-    "\002\007\003\000\002\007\002\000\002\010\005\000\002" +
-    "\011\005\000\002\012\005\000\002\013\005\000\002\014" +
-    "\005\000\002\015\004\000\002\015\002" });
+    "\000\031\000\002\002\003\000\002\002\004\000\002\002" +
+    "\003\000\002\002\003\000\002\002\003\000\002\010\004" +
+    "\000\002\012\005\000\002\011\004\000\002\011\002\000" +
+    "\002\015\005\000\002\007\005\000\002\007\002\000\002" +
+    "\016\004\000\002\016\003\000\002\017\004\000\002\017" +
+    "\002\000\002\013\004\000\002\014\004\000\002\014\002" +
+    "\000\002\020\004\000\002\020\002\000\002\003\010\000" +
+    "\002\004\013\000\002\005\012\000\002\006\007" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -44,32 +46,38 @@ public class SqlParser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\063\000\012\015\014\017\012\021\010\023\011\001" +
+    "\000\073\000\012\017\014\021\012\023\010\025\011\001" +
     "\002\000\004\002\001\001\002\000\004\002\ufffe\001\002" +
     "\000\004\002\ufffd\001\002\000\004\002\uffff\001\002\000" +
-    "\004\016\057\001\002\000\004\016\053\001\002\000\004" +
-    "\016\041\001\002\000\004\002\040\001\002\000\004\025" +
-    "\015\001\002\000\004\012\036\001\002\000\004\016\017" +
-    "\001\002\000\004\025\020\001\002\000\004\013\034\001" +
-    "\002\000\006\006\ufff0\014\022\001\002\000\004\025\026" +
-    "\001\002\000\004\006\024\001\002\000\004\002\ufffc\001" +
-    "\002\000\004\005\032\001\002\000\004\004\030\001\002" +
-    "\000\004\006\ufff1\001\002\000\004\026\031\001\002\000" +
-    "\006\005\ufff5\006\ufff5\001\002\000\004\025\026\001\002" +
-    "\000\004\006\ufff6\001\002\000\004\025\035\001\002\000" +
-    "\014\006\ufff3\014\ufff3\020\ufff3\022\ufff3\025\ufff3\001\002" +
-    "\000\004\025\037\001\002\000\010\014\ufff2\016\ufff2\020" +
-    "\ufff2\001\002\000\004\002\000\001\002\000\004\025\020" +
-    "\001\002\000\006\020\ufff7\025\015\001\002\000\004\020" +
-    "\045\001\002\000\004\020\ufff8\001\002\000\004\026\047" +
-    "\001\002\000\004\006\052\001\002\000\004\012\050\001" +
-    "\002\000\004\026\051\001\002\000\004\006\ufff4\001\002" +
-    "\000\004\002\ufffb\001\002\000\004\025\020\001\002\000" +
-    "\006\006\ufff0\014\022\001\002\000\004\006\056\001\002" +
-    "\000\004\002\ufff9\001\002\000\004\025\020\001\002\000" +
-    "\004\022\061\001\002\000\004\025\015\001\002\000\004" +
-    "\014\063\001\002\000\004\025\026\001\002\000\004\006" +
-    "\065\001\002\000\004\002\ufffa\001\002" });
+    "\004\020\067\001\002\000\004\020\063\001\002\000\004" +
+    "\020\044\001\002\000\004\002\043\001\002\000\006\007" +
+    "\015\027\016\001\002\000\010\013\ufff4\016\ufff4\020\ufff4" +
+    "\001\002\000\012\013\ufff2\014\040\016\ufff2\020\ufff2\001" +
+    "\002\000\004\020\020\001\002\000\004\027\021\001\002" +
+    "\000\004\015\036\001\002\000\006\006\uffed\016\023\001" +
+    "\002\000\004\027\026\001\002\000\004\006\025\001\002" +
+    "\000\004\002\uffec\001\002\000\004\004\034\001\002\000" +
+    "\006\005\032\006\ufff9\001\002\000\004\006\uffee\001\002" +
+    "\000\004\006\ufffc\001\002\000\004\027\026\001\002\000" +
+    "\004\006\ufffa\001\002\000\004\030\035\001\002\000\006" +
+    "\005\ufffb\006\ufffb\001\002\000\004\027\037\001\002\000" +
+    "\014\006\ufff8\012\ufff8\016\ufff8\022\ufff8\024\ufff8\001\002" +
+    "\000\004\027\042\001\002\000\010\013\ufff5\016\ufff5\020" +
+    "\ufff5\001\002\000\010\013\ufff3\016\ufff3\020\ufff3\001\002" +
+    "\000\004\002\000\001\002\000\004\027\021\001\002\000" +
+    "\006\012\047\022\ufff6\001\002\000\004\022\052\001\002" +
+    "\000\006\007\015\027\016\001\002\000\004\013\051\001" +
+    "\002\000\004\022\ufff7\001\002\000\004\012\053\001\002" +
+    "\000\004\030\055\001\002\000\004\013\061\001\002\000" +
+    "\006\013\uffef\014\056\001\002\000\004\030\060\001\002" +
+    "\000\004\013\ufff1\001\002\000\004\013\ufff0\001\002\000" +
+    "\004\006\062\001\002\000\004\002\uffeb\001\002\000\004" +
+    "\027\021\001\002\000\006\006\uffed\016\023\001\002\000" +
+    "\004\006\066\001\002\000\004\002\uffe9\001\002\000\004" +
+    "\027\021\001\002\000\004\024\071\001\002\000\006\007" +
+    "\015\027\016\001\002\000\004\016\073\001\002\000\004" +
+    "\027\026\001\002\000\004\006\075\001\002\000\004\002" +
+    "\uffea\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -77,26 +85,29 @@ public class SqlParser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\063\000\014\002\012\003\003\004\006\005\004\006" +
+    "\000\073\000\014\002\012\003\003\004\006\005\004\006" +
     "\005\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\004\014\015" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\013" +
-    "\020\001\001\000\002\001\001\000\004\015\022\001\001" +
-    "\000\006\010\026\011\024\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\011" +
-    "\032\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\000\002\001\001\000\002\001\001\000\004\016\016" +
+    "\001\001\000\002\001\001\000\004\017\040\001\001\000" +
+    "\002\001\001\000\004\015\021\001\001\000\002\001\001" +
+    "\000\004\020\023\001\001\000\006\010\027\012\026\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\011\030\001\001\000\002\001\001\000\002\001" +
+    "\001\000\004\012\032\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\004\013\041\001\001\000\006\007\042\014\043" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\012" +
-    "\045\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\013" +
-    "\053\001\001\000\004\015\054\001\001\000\002\001\001" +
-    "\000\002\001\001\000\004\013\057\001\001\000\002\001" +
-    "\001\000\004\014\061\001\001\000\002\001\001\000\006" +
-    "\010\063\011\024\001\001\000\002\001\001\000\002\001" +
-    "\001" });
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\015\044\001\001\000\004\007" +
+    "\045\001\001\000\002\001\001\000\004\016\047\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\013\053\001\001\000\002\001\001\000\004\014\056" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\015\063" +
+    "\001\001\000\004\020\064\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\015\067\001\001\000\002\001\001" +
+    "\000\004\016\071\001\001\000\002\001\001\000\006\010" +
+    "\073\012\026\001\001\000\002\001\001\000\002\001\001" +
+    "" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -231,52 +242,61 @@ class CUP$SqlParser$actions {
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // seleccionar ::= SELECCIONAR listado_columnas EN path_archivo filtrar EOINSTR 
+          case 5: // condiciones ::= condicion_seleccion concat_condiciones 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("seleccionar",1, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("condiciones",6, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // insertar ::= INSERTAR EN path_archivo columnas_insertar VALORES lista_valores EOINSTR 
+          case 6: // condicion_seleccion ::= IDENTIFIER RELOP VALUE 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("insertar",2, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-6)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("condicion_seleccion",8, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // actualizar ::= ACTUALIZAR EN path_archivo ASIGNAR listado_columnas FILTRAR condiciones EOINSTR 
+          case 7: // concat_condiciones ::= LOGICALOP condicion_seleccion 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("actualizar",3, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("concat_condiciones",7, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // eliminar ::= ELIMINAR EN path_archivo filtrar EOINSTR 
+          case 8: // concat_condiciones ::= 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("eliminar",4, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("concat_condiciones",7, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // columnas_insertar ::= listado_columnas 
+          case 9: // path_archivo ::= IDENTIFIER DOT IDENTIFIER 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("columnas_insertar",5, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("path_archivo",11, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // columnas_insertar ::= 
+          case 10: // columnas_insertar ::= LPAR listado_columnas RPAR 
+            {
+              Object RESULT =null;
+
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("columnas_insertar",5, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+            }
+          return CUP$SqlParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 11: // columnas_insertar ::= 
             {
               Object RESULT =null;
 
@@ -285,65 +305,119 @@ class CUP$SqlParser$actions {
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // condiciones ::= condicion_seleccion LOGICALOP condicion_seleccion 
+          case 12: // listado_columnas ::= IDENTIFIER listado_columnas_concat 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("condiciones",6, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas",12, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // condicion_seleccion ::= IDENTIFIER RELOP VALUE 
+          case 13: // listado_columnas ::= ALLCOLUMNS 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("condicion_seleccion",7, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas",12, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // lista_valores ::= VALUE COMMA VALUE 
+          case 14: // listado_columnas_concat ::= COMMA IDENTIFIER 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("lista_valores",8, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas_concat",13, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // path_archivo ::= IDENTIFIER DOT IDENTIFIER 
+          case 15: // listado_columnas_concat ::= 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("path_archivo",9, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas_concat",13, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // listado_columnas ::= IDENTIFIER COMMA IDENTIFIER 
+          case 16: // lista_valores ::= VALUE lista_valores_concat 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas",10, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("lista_valores",9, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // filtrar ::= FILTRAR condiciones 
+          case 17: // lista_valores_concat ::= COMMA VALUE 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("filtrar",11, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("lista_valores_concat",10, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // filtrar ::= 
+          case 18: // lista_valores_concat ::= 
             {
               Object RESULT =null;
 
-              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("filtrar",11, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("lista_valores_concat",10, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+            }
+          return CUP$SqlParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 19: // filtrar ::= FILTRAR condiciones 
+            {
+              Object RESULT =null;
+
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("filtrar",14, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+            }
+          return CUP$SqlParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 20: // filtrar ::= 
+            {
+              Object RESULT =null;
+
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("filtrar",14, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+            }
+          return CUP$SqlParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 21: // seleccionar ::= SELECCIONAR listado_columnas EN path_archivo filtrar EOINSTR 
+            {
+              Object RESULT =null;
+
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("seleccionar",1, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+            }
+          return CUP$SqlParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 22: // insertar ::= INSERTAR EN path_archivo columnas_insertar VALORES LPAR lista_valores RPAR EOINSTR 
+            {
+              Object RESULT =null;
+
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("insertar",2, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-8)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+            }
+          return CUP$SqlParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 23: // actualizar ::= ACTUALIZAR EN path_archivo ASIGNAR listado_columnas FILTRAR condiciones EOINSTR 
+            {
+              Object RESULT =null;
+
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("actualizar",3, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
+            }
+          return CUP$SqlParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 24: // eliminar ::= ELIMINAR EN path_archivo filtrar EOINSTR 
+            {
+              Object RESULT =null;
+
+              CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("eliminar",4, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
 

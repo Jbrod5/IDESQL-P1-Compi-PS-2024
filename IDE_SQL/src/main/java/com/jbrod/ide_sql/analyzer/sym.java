@@ -9,26 +9,28 @@ package com.jbrod.ide_sql.analyzer;
 public class sym {
   /* terminals */
   public static final int RELOP = 2;
-  public static final int INSERTAR = 13;
-  public static final int DIGIT = 18;
-  public static final int VALUE = 20;
-  public static final int ELIMINAR = 17;
-  public static final int IDENTIFIER = 19;
-  public static final int ERROR = 21;
+  public static final int INSERTAR = 15;
+  public static final int DIGIT = 20;
+  public static final int VALUE = 22;
+  public static final int ELIMINAR = 19;
+  public static final int IDENTIFIER = 21;
+  public static final int ERROR = 23;
   public static final int RCURLYBRKT = 7;
-  public static final int FILTRAR = 10;
-  public static final int VALORES = 14;
+  public static final int FILTRAR = 12;
+  public static final int VALORES = 16;
   public static final int LOGICALOP = 3;
-  public static final int ASIGNAR = 16;
-  public static final int ACTUALIZAR = 15;
-  public static final int COMMA = 8;
+  public static final int ASIGNAR = 18;
+  public static final int ACTUALIZAR = 17;
+  public static final int COMMA = 10;
   public static final int EOINSTR = 4;
   public static final int EOF = 0;
   public static final int error = 1;
-  public static final int DOT = 9;
+  public static final int DOT = 11;
   public static final int ALLCOLUMNS = 5;
-  public static final int EN = 12;
-  public static final int SELECCIONAR = 11;
+  public static final int EN = 14;
+  public static final int RPAR = 9;
+  public static final int LPAR = 8;
+  public static final int SELECCIONAR = 13;
   public static final int LCURLYBRKT = 6;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -39,6 +41,8 @@ public class sym {
   "ALLCOLUMNS",
   "LCURLYBRKT",
   "RCURLYBRKT",
+  "LPAR",
+  "RPAR",
   "COMMA",
   "DOT",
   "FILTRAR",

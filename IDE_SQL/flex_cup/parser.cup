@@ -25,22 +25,43 @@ parser code{:
 
 
 /* Terminales */
-terminal        RELOP, LOGICALOP, EOINSTR, ALLCOLUMNS, LCURLYBRKT, RCURLYBRKT, COMMA, DOT, FILTRAR, SELECCIONAR, EN, INSERTAR, VALORES, ACTUALIZAR, ASIGNAR, ELIMINAR;
+terminal        RELOP, LOGICALOP, EOINSTR, ALLCOLUMNS, LCURLYBRKT, RCURLYBRKT, LPAR, RPAR, COMMA, DOT, FILTRAR, SELECCIONAR, EN, INSERTAR, VALORES, ACTUALIZAR, ASIGNAR, ELIMINAR;
 terminal String DIGIT, IDENTIFIER, VALUE, ERROR;
 
-/* No terminales */
-non terminal instruccion, seleccionar, insertar, actualizar, eliminar, columnas_insertar, condiciones, condicion_seleccion, lista_valores, path_archivo, listado_columnas, filtrar;
+/* - - - - - - - - - - - - - - No terminales - - - - - - - - - - - - - - - */
+/* Instrucciones */
+non terminal instruccion, seleccionar, insertar, actualizar, eliminar;
+/* Recurrentes */
+non terminal columnas_insertar, condiciones, concat_condiciones, condicion_seleccion, lista_valores, lista_valores_concat, path_archivo, listado_columnas, listado_columnas_concat, filtrar;
 
 /* Producciones */
 instruccion ::= seleccionar | insertar | actualizar | eliminar;
+
+/* Expresiones recurrentes */
+condiciones ::= condicion_seleccion concat_condiciones;
+condicion_seleccion ::= IDENTIFIER RELOP VALUE;
+concat_condiciones ::= LOGICALOP condicion_seleccion | /* epsilon */;
+
+path_archivo ::= IDENTIFIER DOT IDENTIFIER;
+
+columnas_insertar ::= LPAR listado_columnas RPAR | /*epsilon*/;
+listado_columnas ::= IDENTIFIER listado_columnas_concat | ALLCOLUMNS;
+listado_columnas_concat ::= COMMA IDENTIFIER | /*epsilon*/ ;
+
+lista_valores ::= VALUE lista_valores_concat;  
+lista_valores_concat ::= COMMA VALUE | /*epsilon*/;
+
+filtrar ::= FILTRAR condiciones | /*epsilon*/;
+
+
+
+/* Instrucciones */
 seleccionar ::= SELECCIONAR listado_columnas EN path_archivo filtrar EOINSTR;
-insertar ::= INSERTAR EN path_archivo columnas_insertar VALORES (lista_valores) EOINSTR;
+insertar ::= INSERTAR EN path_archivo columnas_insertar VALORES  LPAR lista_valores RPAR EOINSTR;
 actualizar ::= ACTUALIZAR EN path_archivo ASIGNAR listado_columnas FILTRAR condiciones EOINSTR;
 eliminar ::= ELIMINAR EN path_archivo filtrar EOINSTR;
-columnas_insertar ::= (listado_columnas) | /*epsilon*/;
-condiciones ::= condicion_seleccion {LOGICALOP condicion_seleccion};
-condicion_seleccion ::= IDENTIFIER RELOP VALUE;
-lista_valores ::= VALUE {COMMA VALUE};  
-path_archivo ::= IDENTIFIER DOT IDENTIFIER;
-listado_columnas ::= IDENTIFIER {COMMA IDENTIFIER};
-filtrar ::= FILTRAR condiciones | /*epsilon*/;
+
+
+
+
+

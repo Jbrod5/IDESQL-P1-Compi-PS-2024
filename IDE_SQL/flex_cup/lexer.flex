@@ -22,6 +22,8 @@ eoinstr=;
 allcolumns=\*
 lcurlybrkt=\{
 rcurlybrkt=\}
+lpar=\(
+rpar=\)
 comma=,
 dot=\.
 
@@ -68,6 +70,8 @@ value=digit|letter|\"[a-zA-Z]+\"
 {allcolumns}    { return new Symbol(sym.ALLCOLUMNS  , yyline+1, yycolumn+1)  ;}
 {lcurlybrkt}    { return new Symbol(sym.LCURLYBRKT  , yyline+1, yycolumn+1)  ;}
 {rcurlybrkt}    { return new Symbol(sym.RCURLYBRKT  , yyline+1, yycolumn+1)  ;}
+{lpar}          { return new Symbol(sym.LPAR        , yyline+1, yycolumn+1)  ;}
+{rpar}          { return new Symbol(sym.RPAR        , yyline+1, yycolumn+1)  ;}
 {comma}         { return new Symbol(sym.COMMA       , yyline+1, yycolumn+1)  ;}
 {dot}           { return new Symbol(sym.DOT         , yyline+1, yycolumn+1)  ;}
 
