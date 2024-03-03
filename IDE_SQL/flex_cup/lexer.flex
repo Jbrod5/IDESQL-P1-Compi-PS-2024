@@ -23,6 +23,7 @@ allcolumns=\*
 lcurlybrkt=\{
 rcurlybrkt=\}
 comma=,
+dot=\.
 
 filtrar=FILTRAR
 seleccionar=SELECCIONAR
@@ -60,14 +61,15 @@ value=digit|letter|\"[a-zA-Z]+\"
 
 {whitespace} 	{/* ignorar */}
 
-{relop}         { return new Symbol(sym.RELOP       , yyline+1, yycolumn+1)      ;}
-{logicalop}     { return new Symbol(sym.LOGICALOP   , yyline+1, yycolumn+1)      ;}
+{relop}         { return new Symbol(sym.RELOP       , yyline+1, yycolumn+1)  ;}
+{logicalop}     { return new Symbol(sym.LOGICALOP   , yyline+1, yycolumn+1)  ;}
 
-{eoinstr}       { return new Symbol(sym.EOINSTR   , yyline+1, yycolumn+1)     ;}
-{allcolumns}    { return new Symbol(sym.ALLCOLUMNS, yyline+1, yycolumn+1)     ;}
-{lcurlybrkt}    { return new Symbol(sym.LCURLYBRKT, yyline+1, yycolumn+1)     ;}
-{rcurlybrkt}    { return new Symbol(sym.RCURLYBRKT, yyline+1, yycolumn+1)     ;}
-{comma}         { return new Symbol(sym.COMMA     , yyline+1, yycolumn+1)     ;}
+{eoinstr}       { return new Symbol(sym.EOINSTR     , yyline+1, yycolumn+1)  ;}
+{allcolumns}    { return new Symbol(sym.ALLCOLUMNS  , yyline+1, yycolumn+1)  ;}
+{lcurlybrkt}    { return new Symbol(sym.LCURLYBRKT  , yyline+1, yycolumn+1)  ;}
+{rcurlybrkt}    { return new Symbol(sym.RCURLYBRKT  , yyline+1, yycolumn+1)  ;}
+{comma}         { return new Symbol(sym.COMMA       , yyline+1, yycolumn+1)  ;}
+{dot}           { return new Symbol(sym.DOT         , yyline+1, yycolumn+1)  ;}
 
 {filtrar}       { return new Symbol(sym.FILTRAR     , yyline+1, yycolumn+1)  ;}
 {seleccionar}   { return new Symbol(sym.SELECCIONAR , yyline+1, yycolumn+1)  ;}
