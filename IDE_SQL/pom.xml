@@ -11,4 +11,14 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.mycompany.ide_sql.IDE_SQL</exec.mainClass>
     </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.cup</groupId>
+            <artifactId>cup</artifactId>
+            <version>0.11</version>
+            <scope>system</scope>
+            <systemPath>/home/jbravo/Apps/cup/cup-20160615/java-cup-11b-runtime.jar</systemPath>
+        </dependency>
+    </dependencies>
 </project>
