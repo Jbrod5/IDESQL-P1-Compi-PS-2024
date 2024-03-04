@@ -1,10 +1,13 @@
 package com.jbrod.ide_sql.ui;
 
 import com.jbrod.ide_sql.app.CsvDriver.Analyzer;
+import com.jbrod.ide_sql.app.CsvDriver.CsvFile;
 import java.awt.GridLayout;
 import java.io.File;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
@@ -32,11 +35,24 @@ public class AppFrame extends javax.swing.JFrame {
         addTreeNodes(root, rootFile);
         
         initComponents();
-
+        
+        //tbdWorkPanel.add(new FilePanel());
         
         //Agregar el jtree
         jScrollPane1.add(tree);
         jScrollPane1.setViewportView(tree);
+        
+
+        // Agregar TreeSelectionListener para mostrar el nombre del archivo al hacer clic
+        tree.addTreeSelectionListener(new TreeSelectionListener() {
+            public void valueChanged(TreeSelectionEvent e) {
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                if (selectedNode != null && selectedNode.isLeaf()) {
+                    CsvFile file = ((CsvFile)selectedNode);
+                    tbdWorkPanel.addTab(file.getFileName(), file.getFilePanel());
+                }
+            }
+        });
         
     }
     
@@ -50,10 +66,17 @@ public class AppFrame extends javax.swing.JFrame {
             }
         } else {
             String fileName = actualFile.getName();
-            DefaultMutableTreeNode fileNode = new DefaultMutableTreeNode(fileName) ;
-            actualNode.add(fileNode);
+            
+            CsvFile fileNode = new CsvFile(actualFile.getAbsolutePath(), fileName);
             analyzer.addCsvFile(actualFile.getAbsolutePath(), fileNode);
+            
+            //DefaultMutableTreeNode fileNode = new DefaultMutableTreeNode(fileName) ;
+            actualNode.add(fileNode);
             System.out.println(fileName);
+        
+            
+        
+        
         }
     }
 
@@ -68,7 +91,7 @@ public class AppFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tbdWorkPanel = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,7 +104,7 @@ public class AppFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addComponent(tbdWorkPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -90,7 +113,7 @@ public class AppFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1))
+                    .addComponent(tbdWorkPanel))
                 .addContainerGap())
         );
 
@@ -99,6 +122,6 @@ public class AppFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane tbdWorkPanel;
     // End of variables declaration//GEN-END:variables
 }

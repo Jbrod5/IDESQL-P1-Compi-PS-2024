@@ -28,6 +28,12 @@ public class Analyzer {
     
     public void addCsvFile(String path, DefaultMutableTreeNode treeNode ){
         CsvFile newFile = new CsvFile(path, fileManager, treeNode);
+        listFiles.add(newFile);
+    }
+    
+    public void addCsvFIle(CsvFile file){
+        file.addToList(fileManager);
+        listFiles.add(file);
     }
     
 }
