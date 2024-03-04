@@ -1,4 +1,4 @@
-package com.jbrod.ide_sql.analyzer;
+package com.jbrod.ide_sql.app.analyzer;
 import java_cup.runtime.*;
 
 parser code{:
@@ -24,17 +24,28 @@ parser code{:
 :}
 
 
-/* Terminales */
-terminal        RELOP, LOGICALOP, EOINSTR, ALLCOLUMNS, LCURLYBRKT, RCURLYBRKT, LPAR, RPAR, COMMA, DOT, FILTRAR, SELECCIONAR, EN, INSERTAR, VALORES, ACTUALIZAR, ASIGNAR, ELIMINAR;
+/* - - - - - - - - - - - - - - -Terminales - - - - - - - - - - - - - - - - */
+terminal        RELOP, LOGICALOP;
+terminal        EOINSTR, ALLCOLUMNS;
+terminal        LCURLYBRKT, RCURLYBRKT, LPAR, RPAR;
+terminal        COMMA, DOT;
+terminal        FILTRAR, EN,  VALORES, ASIGNAR;
+terminal        ACTUALIZAR, INSERTAR, SELECCIONAR, ELIMINAR;
 terminal String DIGIT, IDENTIFIER, VALUE, ERROR;
 
 /* - - - - - - - - - - - - - - No terminales - - - - - - - - - - - - - - - */
 /* Instrucciones */
 non terminal instruccion, seleccionar, insertar, actualizar, eliminar;
-/* Recurrentes */
-non terminal columnas_insertar, condiciones, concat_condiciones, condicion_seleccion, lista_valores, lista_valores_concat, path_archivo, listado_columnas, listado_columnas_concat, filtrar;
 
-/* Producciones */
+/* Recurrentes */
+non terminal columnas_insertar, listado_columnas, listado_columnas_concat;
+non terminal condiciones, concat_condiciones, condicion_seleccion;
+non terminal lista_valores, lista_valores_concat;
+
+non terminal path_archivo,  filtrar;
+
+
+/* - - - - - - - - - - - - - - Producciones - - - - - - - - - - - - - - -  */
 instruccion ::= seleccionar | insertar | actualizar | eliminar;
 
 /* Expresiones recurrentes */
@@ -60,8 +71,5 @@ seleccionar ::= SELECCIONAR listado_columnas EN path_archivo filtrar EOINSTR;
 insertar ::= INSERTAR EN path_archivo columnas_insertar VALORES  LPAR lista_valores RPAR EOINSTR;
 actualizar ::= ACTUALIZAR EN path_archivo ASIGNAR listado_columnas FILTRAR condiciones EOINSTR;
 eliminar ::= ELIMINAR EN path_archivo filtrar EOINSTR;
-
-
-
 
 

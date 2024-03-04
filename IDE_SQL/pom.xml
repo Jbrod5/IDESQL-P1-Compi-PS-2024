@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>com.mycompany.ide_sql.IDE_SQL</exec.mainClass>
+        <exec.mainClass>com.jbrod.ide_sql.IDE_SQL</exec.mainClass>
     </properties>
     
     <dependencies>

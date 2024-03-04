@@ -3,7 +3,7 @@
 // source: lexer.flex
 
 /*Codigo de usuario*/
-package com.jbrod.ide_sql.analyzer;
+package com.jbrod.ide_sql.app.analyzer;
 import java_cup.runtime.*;
 
 
