@@ -18,6 +18,7 @@ public class AppFrame extends javax.swing.JFrame {
 
     private Analyzer analyzer;
     private String rootPath;
+    private JTree tree; 
     
     /**
      * Creates new form AppFrame
@@ -31,7 +32,8 @@ public class AppFrame extends javax.swing.JFrame {
         // Crear JTree
         File rootFile = new File(rootPath);
         DefaultMutableTreeNode root = new DefaultMutableTreeNode(rootFile.getName());
-        JTree tree = new JTree(root);
+        //JTree tree = new JTree(root);
+        tree = new JTree(root);
         addTreeNodes(root, rootFile);
         
         initComponents();
@@ -41,18 +43,10 @@ public class AppFrame extends javax.swing.JFrame {
         //Agregar el jtree
         jScrollPane1.add(tree);
         jScrollPane1.setViewportView(tree);
-        
+        addListener();
 
         // Agregar TreeSelectionListener para mostrar el nombre del archivo al hacer clic
-        tree.addTreeSelectionListener(new TreeSelectionListener() {
-            public void valueChanged(TreeSelectionEvent e) {
-                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-                if (selectedNode != null && selectedNode.isLeaf()) {
-                    CsvFile file = ((CsvFile)selectedNode);
-                    tbdWorkPanel.addTab(file.getFileName(), file.getFilePanel());
-                }
-            }
-        });
+        //addListener(tree);
         
     }
     
@@ -66,22 +60,39 @@ public class AppFrame extends javax.swing.JFrame {
             }
         } else {
             String fileName = actualFile.getName();
-            
+            System.out.println("El nombre del archivo a agregar como nodo es: " + fileName);
             CsvFile fileNode = new CsvFile(actualFile.getAbsolutePath(), fileName);
-            analyzer.addCsvFile(actualFile.getAbsolutePath(), fileNode);
+            //analyzer.addCsvFile(actualFile.getAbsolutePath(), fileNode);
+            analyzer.addCsvFIle(fileNode);
             
             //DefaultMutableTreeNode fileNode = new DefaultMutableTreeNode(fileName) ;
             actualNode.add(fileNode);
             System.out.println(fileName);
-        
-            
-        
-        
         }
+        
     }
 
+    public  void addListener(){
+        AppFrame app = this; 
+        tree.addTreeSelectionListener(new TreeSelectionListener() {
+            public void valueChanged(TreeSelectionEvent e) {
+                DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                if (selectedNode != null && selectedNode.isLeaf()) {
+                    CsvFile file = ((CsvFile)selectedNode);
+                    tbdWorkPanel.addTab(file.getFileName(), file.getFilePanel());
+                    file.updateAppFrame(app);
+                    System.out.println("El titulo del archivo agregado es: " + file.getFileName());
+                    System.out.println("La instancia del panel es la siguiente: " + file.getFilePanel());
+                }
+            }
+        });
 
+    }
     
+    
+    public void removeTab(FilePanel panel){
+        tbdWorkPanel.remove(panel);
+    }
     
     
     

@@ -16,6 +16,8 @@ public class FilePanel extends javax.swing.JPanel {
      * Creates new form FilePanel
      */
     private CsvFile file; 
+    private AppFrame appFrame;
+    
     public FilePanel(CsvFile file) {
         initComponents();
         this.file = file; 
@@ -27,6 +29,10 @@ public class FilePanel extends javax.swing.JPanel {
     
     public void updateFilePanel(){
         taContentFile.setText(file.getContent());
+    }
+    
+    public void updateAppFrame(AppFrame app){
+        this.appFrame = app;
     }
 
     /**
@@ -49,6 +55,11 @@ public class FilePanel extends javax.swing.JPanel {
         btnExecute.setText("Ejecutar");
 
         btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         btnSaveContent.setText("Guardar");
         btnSaveContent.setActionCommand("Guardar texto");
@@ -113,7 +124,15 @@ public class FilePanel extends javax.swing.JPanel {
 
     private void btnSaveContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveContentActionPerformed
         // TODO add your handling code here:
+        String contentFile = taContentFile.getText();
+        file.updateContent(contentFile);
+        updateFilePanel();
     }//GEN-LAST:event_btnSaveContentActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        // TODO add your handling code here:
+        appFrame.removeTab(this);
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     public void setContentFileString(String content){
         taContentFile.setText(content);
