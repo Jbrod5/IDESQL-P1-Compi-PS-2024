@@ -1,7 +1,7 @@
 mvn install:install-file \
-   -Dfile=<path-to-file> \
-   -DgroupId=<group-id> \
-   -DartifactId=<artifact-id> \
-   -Dversion=<version> \
-   -Dpackaging=<packaging> \
+   -Dfile=/home/jbravo/Apps/cup/cup-20160615/java-cup-11b-runtime.jar \
+   -DgroupId=com.cup\
+   -DartifactId=cup \
+   -Dversion=0.11 \
+   -Dpackaging=jar \
    -DgeneratePom=true

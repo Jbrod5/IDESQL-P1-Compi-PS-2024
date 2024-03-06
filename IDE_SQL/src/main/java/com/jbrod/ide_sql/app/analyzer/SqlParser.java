@@ -195,7 +195,10 @@ class CUP$SqlParser$actions {
           case 0: // instruccion ::= seleccionar 
             {
               Object RESULT =null;
-
+		int sleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object s = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		  System.out.println(s);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("instruccion",0, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -218,7 +221,10 @@ class CUP$SqlParser$actions {
           case 2: // instruccion ::= insertar 
             {
               Object RESULT =null;
-
+		int ileft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		  System.out.println(i);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("instruccion",0, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -227,7 +233,10 @@ class CUP$SqlParser$actions {
           case 3: // instruccion ::= actualizar 
             {
               Object RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object a = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		  System.out.println(a);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("instruccion",0, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -236,7 +245,10 @@ class CUP$SqlParser$actions {
           case 4: // instruccion ::= eliminar 
             {
               Object RESULT =null;
-
+		int eleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int eright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object e = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		  System.out.println(e);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("instruccion",0, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -245,7 +257,14 @@ class CUP$SqlParser$actions {
           case 5: // condiciones ::= condicion_seleccion concat_condiciones 
             {
               Object RESULT =null;
-
+		int csleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int csright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		Object cs = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int ccleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int ccright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object cc = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		 String condiciones = new String(cs.toString() + cc.toString());
+                   RESULT = condiciones; 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("condiciones",8, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -254,7 +273,17 @@ class CUP$SqlParser$actions {
           case 6: // condicion_seleccion ::= IDENTIFIER RELOP VALUE 
             {
               Object RESULT =null;
-
+		int idleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).value;
+		int rlpleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int rlpright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		String rlp = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int vlleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int vlright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String vl = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		 String condicion_seleccion = id + rlp + vl;
+                           RESULT = condicion_seleccion; 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("condicion_seleccion",10, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -263,7 +292,14 @@ class CUP$SqlParser$actions {
           case 7: // concat_condiciones ::= LOGICALOP condicion_seleccion 
             {
               Object RESULT =null;
-
+		int lgleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int lgright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		String lg = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int csleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int csright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object cs = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		 String concat_condiciones = lg + cs;
+                       RESULT = concat_condiciones; 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("concat_condiciones",9, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -272,7 +308,7 @@ class CUP$SqlParser$actions {
           case 8: // concat_condiciones ::= 
             {
               Object RESULT =null;
-
+		RESULT = new String("");
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("concat_condiciones",9, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -281,7 +317,14 @@ class CUP$SqlParser$actions {
           case 9: // path_archivo ::= IDENTIFIER DOT IDENTIFIER 
             {
               Object RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String b = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		 String path = a + "." + "b";
+                   RESULT = path;  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("path_archivo",13, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -290,7 +333,11 @@ class CUP$SqlParser$actions {
           case 10: // columnas_insertar ::= LPAR listado_columnas RPAR 
             {
               Object RESULT =null;
-
+		int list_colleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int list_colright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		Object list_col = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		String listado_columnas = "("+list_col+")";
+                        RESULT = listado_columnas;
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("columnas_insertar",5, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -299,7 +346,7 @@ class CUP$SqlParser$actions {
           case 11: // columnas_insertar ::= 
             {
               Object RESULT =null;
-
+		  RESULT = new String("");  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("columnas_insertar",5, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -308,7 +355,13 @@ class CUP$SqlParser$actions {
           case 12: // listado_columnas ::= IDENTIFIER listado_columnas_concat 
             {
               Object RESULT =null;
-
+		int idleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int liscolleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int liscolright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object liscol = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		String r = id + liscol; RESULT = r;
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas",6, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -317,7 +370,10 @@ class CUP$SqlParser$actions {
           case 13: // listado_columnas ::= ALLCOLUMNS 
             {
               Object RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		RESULT = new String(a); 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas",6, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -326,7 +382,13 @@ class CUP$SqlParser$actions {
           case 14: // listado_columnas_concat ::= COMMA IDENTIFIER 
             {
               Object RESULT =null;
-
+		int cleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		String c = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int idleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int idright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String id = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		RESULT = new String("c + id");
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas_concat",7, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -335,7 +397,7 @@ class CUP$SqlParser$actions {
           case 15: // listado_columnas_concat ::= 
             {
               Object RESULT =null;
-
+		 RESULT = new String(""); 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("listado_columnas_concat",7, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -344,7 +406,13 @@ class CUP$SqlParser$actions {
           case 16: // lista_valores ::= VALUE lista_valores_concat 
             {
               Object RESULT =null;
-
+		int vlleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int vlright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		String vl = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int lsvlleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int lsvlright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object lsvl = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		RESULT = new String(vl + lsvl); 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("lista_valores",11, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -353,7 +421,13 @@ class CUP$SqlParser$actions {
           case 17: // lista_valores_concat ::= COMMA VALUE 
             {
               Object RESULT =null;
-
+		int cmleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int cmright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		String cm = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int vlleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int vlright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String vl = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		RESULT = new String(cm+vl); 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("lista_valores_concat",12, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -362,7 +436,7 @@ class CUP$SqlParser$actions {
           case 18: // lista_valores_concat ::= 
             {
               Object RESULT =null;
-
+		  RESULT = new String(""); 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("lista_valores_concat",12, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -371,7 +445,13 @@ class CUP$SqlParser$actions {
           case 19: // filtrar ::= FILTRAR condiciones 
             {
               Object RESULT =null;
-
+		int fleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int fright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		String f = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		RESULT = new String(f + c); 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("filtrar",14, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -380,7 +460,7 @@ class CUP$SqlParser$actions {
           case 20: // filtrar ::= 
             {
               Object RESULT =null;
-
+		  RESULT = new String(""); 
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("filtrar",14, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -389,7 +469,25 @@ class CUP$SqlParser$actions {
           case 21: // seleccionar ::= SELECCIONAR listado_columnas EN path_archivo filtrar EOINSTR 
             {
               Object RESULT =null;
-
+		int selleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).left;
+		int selright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).right;
+		String sel = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).value;
+		int lcleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).left;
+		int lcright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).right;
+		Object lc = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).value;
+		int enleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).left;
+		int enright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).right;
+		String en = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).value;
+		int ptleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).left;
+		int ptright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).right;
+		Object pt = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).value;
+		int flleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int flright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		Object fl = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int eileft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int eiright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String ei = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		RESULT = new String(sel+lc+en+pt+fl+ei);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("seleccionar",1, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -398,7 +496,34 @@ class CUP$SqlParser$actions {
           case 22: // insertar ::= INSERTAR EN path_archivo columnas_insertar VALORES LPAR lista_valores RPAR EOINSTR 
             {
               Object RESULT =null;
-
+		int inleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-8)).left;
+		int inright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-8)).right;
+		String in = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-8)).value;
+		int enleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)).left;
+		int enright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)).right;
+		String en = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)).value;
+		int ptleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-6)).left;
+		int ptright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-6)).right;
+		Object pt = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-6)).value;
+		int cileft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).left;
+		int ciright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).right;
+		Object ci = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).value;
+		int vlleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).left;
+		int vlright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).right;
+		String vl = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).value;
+		int lpleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).left;
+		int lpright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).right;
+		String lp = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).value;
+		int lsleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).left;
+		int lsright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).right;
+		Object ls = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).value;
+		int rpleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int rpright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		String rp = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int eileft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int eiright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String ei = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		 RESULT = new String(in + en + pt + ci + vl + lp + ls + rp + ei);   
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("insertar",2, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-8)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -407,7 +532,31 @@ class CUP$SqlParser$actions {
           case 23: // actualizar ::= ACTUALIZAR EN path_archivo ASIGNAR listado_columnas FILTRAR condiciones EOINSTR 
             {
               Object RESULT =null;
-
+		int acleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)).left;
+		int acright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)).right;
+		String ac = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)).value;
+		int enleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-6)).left;
+		int enright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-6)).right;
+		String en = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-6)).value;
+		int ptleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).left;
+		int ptright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).right;
+		Object pt = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-5)).value;
+		int asleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).left;
+		int asright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).right;
+		String as = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).value;
+		int lcleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).left;
+		int lcright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).right;
+		Object lc = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).value;
+		int flleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).left;
+		int flright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).right;
+		String fl = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).value;
+		int coleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int coright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		Object co = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int eileft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int eiright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String ei = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		RESULT = new String(ac + en + pt + as + lc + fl + co + ei);   
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("actualizar",3, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-7)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -416,7 +565,22 @@ class CUP$SqlParser$actions {
           case 24: // eliminar ::= ELIMINAR EN path_archivo filtrar EOINSTR 
             {
               Object RESULT =null;
-
+		int elleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).left;
+		int elright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).right;
+		String el = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)).value;
+		int enleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).left;
+		int enright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).right;
+		String en = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-3)).value;
+		int ptleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).left;
+		int ptright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).right;
+		Object pt = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-2)).value;
+		int flleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).left;
+		int flright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).right;
+		Object fl = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-1)).value;
+		int eileft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
+		int eiright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
+		String ei = (String)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
+		  RESULT = new String(el+en+pt+fl+ei);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("eliminar",4, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.elementAt(CUP$SqlParser$top-4)), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;

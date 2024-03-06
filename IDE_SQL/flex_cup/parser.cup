@@ -25,12 +25,12 @@ parser code{:
 
 
 /* - - - - - - - - - - - - - - -Terminales - - - - - - - - - - - - - - - - */
-terminal        RELOP, LOGICALOP;
-terminal        EOINSTR, ALLCOLUMNS;
-terminal        LCURLYBRKT, RCURLYBRKT, LPAR, RPAR;
-terminal        COMMA, DOT;
-terminal        FILTRAR, EN,  VALORES, ASIGNAR;
-terminal        ACTUALIZAR, INSERTAR, SELECCIONAR, ELIMINAR;
+terminal String RELOP, LOGICALOP;
+terminal String EOINSTR, ALLCOLUMNS;
+terminal String LCURLYBRKT, RCURLYBRKT, LPAR, RPAR;
+terminal String COMMA, DOT;
+terminal String FILTRAR, EN,  VALORES, ASIGNAR;
+terminal String ACTUALIZAR, INSERTAR, SELECCIONAR, ELIMINAR;
 terminal String DIGIT, IDENTIFIER, VALUE, ERROR;
 
 /* - - - - - - - - - - - - - - No terminales - - - - - - - - - - - - - - - */
@@ -46,30 +46,84 @@ non terminal path_archivo,  filtrar;
 
 
 /* - - - - - - - - - - - - - - Producciones - - - - - - - - - - - - - - -  */
-instruccion ::= seleccionar | insertar | actualizar | eliminar;
+instruccion ::= seleccionar:s {:  System.out.println(s);  :}
+                | insertar:i {:  System.out.println(i);  :} 
+                | actualizar:a {:  System.out.println(a);  :}
+                | eliminar:e {:  System.out.println(e);  :};
 
 /* Expresiones recurrentes */
-condiciones ::= condicion_seleccion concat_condiciones;
-condicion_seleccion ::= IDENTIFIER RELOP VALUE;
-concat_condiciones ::= LOGICALOP condicion_seleccion | /* epsilon */;
+condiciones ::= condicion_seleccion:cs concat_condiciones:cc
+                {: String condiciones = new String(cs.toString() + cc.toString());
+                   RESULT = condiciones; :};
+condicion_seleccion ::= IDENTIFIER:id RELOP:rlp VALUE:vl
+                        {: String condicion_seleccion = id + rlp + vl;
+                           RESULT = condicion_seleccion; :};
+concat_condiciones ::= LOGICALOP:lg condicion_seleccion:cs 
+                    {: String concat_condiciones = lg + cs;
+                       RESULT = concat_condiciones; :}
+                    | /* epsilon */ {:RESULT = new String("");:};
 
-path_archivo ::= IDENTIFIER DOT IDENTIFIER;
 
-columnas_insertar ::= LPAR listado_columnas RPAR | /*epsilon*/;
-listado_columnas ::= IDENTIFIER listado_columnas_concat | ALLCOLUMNS;
-listado_columnas_concat ::= COMMA IDENTIFIER | /*epsilon*/ ;
 
-lista_valores ::= VALUE lista_valores_concat;  
-lista_valores_concat ::= COMMA VALUE | /*epsilon*/;
 
-filtrar ::= FILTRAR condiciones | /*epsilon*/;
+path_archivo ::= IDENTIFIER:a DOT IDENTIFIER:b 
+                {: String path = a + "." + "b";
+                   RESULT = path;  :};
+
+
+
+
+columnas_insertar ::= LPAR listado_columnas:list_col RPAR 
+                      {:String listado_columnas = "("+list_col+")";
+                        RESULT = listado_columnas;:}
+                    | /*epsilon*/{:  RESULT = new String("");  :};
+
+listado_columnas ::= IDENTIFIER:id listado_columnas_concat:liscol
+                    {:String r = id + liscol; RESULT = r;:}
+                    | ALLCOLUMNS: a 
+                    {:RESULT = new String(a); :};
+
+listado_columnas_concat ::= COMMA:c IDENTIFIER:id 
+                            {:RESULT = new String("c + id");:}
+                            | /*epsilon*/ {: RESULT = new String(""); :};
+
+
+
+
+
+lista_valores ::= VALUE:vl lista_valores_concat:lsvl
+                {:RESULT = new String(vl + lsvl); :};  
+
+lista_valores_concat ::= COMMA:cm VALUE:vl
+                        {:RESULT = new String(cm+vl); :} 
+                        | /*epsilon*/ {:  RESULT = new String(""); :}; 
+
+
+
+
+
+filtrar ::= FILTRAR:f condiciones:c
+            {:RESULT = new String(f + c); :} 
+            | /*epsilon*/ {:  RESULT = new String(""); :};
 
 
 
 /* Instrucciones */
-seleccionar ::= SELECCIONAR listado_columnas EN path_archivo filtrar EOINSTR;
-insertar ::= INSERTAR EN path_archivo columnas_insertar VALORES  LPAR lista_valores RPAR EOINSTR;
-actualizar ::= ACTUALIZAR EN path_archivo ASIGNAR listado_columnas FILTRAR condiciones EOINSTR;
-eliminar ::= ELIMINAR EN path_archivo filtrar EOINSTR;
+seleccionar ::= SELECCIONAR:sel listado_columnas:lc EN:en path_archivo:pt filtrar:fl EOINSTR:ei
+                {:RESULT = new String(sel+lc+en+pt+fl+ei);  :};
+
+insertar ::= INSERTAR:in EN:en path_archivo:pt columnas_insertar:ci VALORES:vl  LPAR:lp lista_valores:ls RPAR:rp EOINSTR:ei
+                {: RESULT = new String(in + en + pt + ci + vl + lp + ls + rp + ei);   :};
+
+actualizar ::= ACTUALIZAR:ac EN:en path_archivo:pt ASIGNAR:as listado_columnas:lc FILTRAR:fl condiciones:co EOINSTR:ei
+                {:RESULT = new String(ac + en + pt + as + lc + fl + co + ei);   :};
+
+eliminar ::= ELIMINAR:el EN:en path_archivo:pt filtrar:fl EOINSTR:ei
+            {:  RESULT = new String(el+en+pt+fl+ei);  :};
 
 
+
+
+
+
+ELIMINAR EN proyecto.archivo1 FILTRAR columna1=2

@@ -6,6 +6,13 @@ import com.jbrod.ide_sql.ui.AppFrame;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;
 
+
+import com.jbrod.ide_sql.app.analyzer.SqlParser;
+import com.jbrod.ide_sql.app.analyzer.SqlLexer;
+import java.io.StringReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jbravo
@@ -14,6 +21,19 @@ public class IDE_SQL {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        
+        
+        String cadena = "ELIMINAR EN proyecto.archivo1 FILTRAR columna1=\"hola\";"; 
+        StringReader rd = new StringReader(cadena);
+        SqlLexer lexer = new SqlLexer(rd);
+        SqlParser parser = new SqlParser(lexer);
+        
+        try {
+            parser.parse();
+        } catch (Exception ex) {
+            Logger.getLogger(IDE_SQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         //1. Obtener el directorio
         JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
