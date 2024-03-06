@@ -58,8 +58,8 @@ condiciones ::= condicion_seleccion:cs concat_condiciones:cc
 condicion_seleccion ::= IDENTIFIER:id RELOP:rlp VALUE:vl
                         {: String condicion_seleccion = id + rlp + vl;
                            RESULT = condicion_seleccion; :};
-concat_condiciones ::= LOGICALOP:lg condicion_seleccion:cs 
-                    {: String concat_condiciones = lg + cs;
+concat_condiciones ::= LOGICALOP:lg condicion_seleccion:cs concat_condiciones:cc
+                    {: String concat_condiciones = lg + cs + cc;
                        RESULT = concat_condiciones; :}
                     | /* epsilon */ {:RESULT = new String("");:};
 
@@ -83,8 +83,8 @@ listado_columnas ::= IDENTIFIER:id listado_columnas_concat:liscol
                     | ALLCOLUMNS: a 
                     {:RESULT = new String(a); :};
 
-listado_columnas_concat ::= COMMA:c IDENTIFIER:id 
-                            {:RESULT = new String("c + id");:}
+listado_columnas_concat ::= COMMA:c IDENTIFIER:id listado_columnas_concat:lcc
+                            {:RESULT = new String(c + id + lcc);:}
                             | /*epsilon*/ {: RESULT = new String(""); :};
 
 
@@ -94,8 +94,8 @@ listado_columnas_concat ::= COMMA:c IDENTIFIER:id
 lista_valores ::= VALUE:vl lista_valores_concat:lsvl
                 {:RESULT = new String(vl + lsvl); :};  
 
-lista_valores_concat ::= COMMA:cm VALUE:vl
-                        {:RESULT = new String(cm+vl); :} 
+lista_valores_concat ::= COMMA:cm VALUE:vl lista_valores_concat:lvc
+                        {:RESULT = new String(cm+vl+lvc); :} 
                         | /*epsilon*/ {:  RESULT = new String(""); :}; 
 
 
@@ -121,9 +121,3 @@ actualizar ::= ACTUALIZAR:ac EN:en path_archivo:pt ASIGNAR:as listado_columnas:l
 eliminar ::= ELIMINAR:el EN:en path_archivo:pt filtrar:fl EOINSTR:ei
             {:  RESULT = new String(el+en+pt+fl+ei);  :};
 
-
-
-
-
-
-ELIMINAR EN proyecto.archivo1 FILTRAR columna1=2
