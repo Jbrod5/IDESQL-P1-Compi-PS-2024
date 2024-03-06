@@ -3,6 +3,8 @@ import java_cup.runtime.*;
 
 parser code{:
 
+    public String instr; 
+
     //Conectar parser al scanner
     public SqlParser(SqlLexer lex){
         super(lex);
@@ -46,10 +48,10 @@ non terminal path_archivo,  filtrar;
 
 
 /* - - - - - - - - - - - - - - Producciones - - - - - - - - - - - - - - -  */
-instruccion ::= seleccionar:s {:  System.out.println(s);  :}
-                | insertar:i {:  System.out.println(i);  :} 
-                | actualizar:a {:  System.out.println(a);  :}
-                | eliminar:e {:  System.out.println(e);  :};
+instruccion ::= seleccionar:s   {:  instr = s.toString(); System.out.println(s);  :}
+                | insertar:i    {:  instr = i.toString(); System.out.println(i);  :} 
+                | actualizar:a  {:  instr = a.toString(); System.out.println(a);  :}
+                | eliminar:e    {:  instr = e.toString(); System.out.println(e);  :};
 
 /* Expresiones recurrentes */
 condiciones ::= condicion_seleccion:cs concat_condiciones:cc

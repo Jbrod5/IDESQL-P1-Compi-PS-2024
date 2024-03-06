@@ -150,6 +150,8 @@ public class SqlParser extends java_cup.runtime.lr_parser {
 
 
 
+    public String instr; 
+
     //Conectar parser al scanner
     public SqlParser(SqlLexer lex){
         super(lex);
@@ -201,7 +203,7 @@ class CUP$SqlParser$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
 		Object s = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
-		  System.out.println(s);  
+		  instr = s.toString(); System.out.println(s);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("instruccion",0, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -227,7 +229,7 @@ class CUP$SqlParser$actions {
 		int ileft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
 		Object i = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
-		  System.out.println(i);  
+		  instr = i.toString(); System.out.println(i);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("instruccion",0, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -239,7 +241,7 @@ class CUP$SqlParser$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
-		  System.out.println(a);  
+		  instr = a.toString(); System.out.println(a);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("instruccion",0, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;
@@ -251,7 +253,7 @@ class CUP$SqlParser$actions {
 		int eleft = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()).right;
 		Object e = (Object)((java_cup.runtime.Symbol) CUP$SqlParser$stack.peek()).value;
-		  System.out.println(e);  
+		  instr = e.toString(); System.out.println(e);  
               CUP$SqlParser$result = parser.getSymbolFactory().newSymbol("instruccion",0, ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$SqlParser$stack.peek()), RESULT);
             }
           return CUP$SqlParser$result;

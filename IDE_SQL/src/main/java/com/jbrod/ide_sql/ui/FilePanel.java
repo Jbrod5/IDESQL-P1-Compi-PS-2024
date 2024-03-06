@@ -4,7 +4,13 @@
  */
 package com.jbrod.ide_sql.ui;
 
+import com.jbrod.ide_sql.IDE_SQL;
 import com.jbrod.ide_sql.app.CsvDriver.CsvFile;
+import com.jbrod.ide_sql.app.analyzer.SqlLexer;
+import com.jbrod.ide_sql.app.analyzer.SqlParser;
+import java.io.StringReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -53,6 +59,11 @@ public class FilePanel extends javax.swing.JPanel {
         taConsole = new javax.swing.JTextArea();
 
         btnExecute.setText("Ejecutar");
+        btnExecute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExecuteActionPerformed(evt);
+            }
+        });
 
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +144,21 @@ public class FilePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         appFrame.removeTab(this);
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecuteActionPerformed
+        // TODO add your handling code here:
+        String cadena = taConsole.getText(); 
+        StringReader rd = new StringReader(cadena);
+        SqlLexer lexer = new SqlLexer(rd);
+        SqlParser parser = new SqlParser(lexer);
+        
+        try {
+            parser.parse();
+            taConsole.setText("Salida: \n" + parser.instr);
+        } catch (Exception ex) {
+            Logger.getLogger(IDE_SQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExecuteActionPerformed
 
     public void setContentFileString(String content){
         taContentFile.setText(content);
